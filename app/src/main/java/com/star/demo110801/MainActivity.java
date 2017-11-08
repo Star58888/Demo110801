@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv;
-    ArrayList<Map<String , String>> mylist;
+    ArrayList<Map<String , Object>> mylist;
     SimpleAdapter simpleAdapter;
 
     @Override
@@ -20,22 +20,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lv = findViewById(R.id.list);
         mylist = new ArrayList<>();
-        HashMap<String , String> m1 =new HashMap<>();
+        HashMap<String , Object> m1 =new HashMap<>();
         m1.put("city" , "台北");
         m1.put("code" , "02");
-        HashMap<String , String> m2 =new HashMap<>();
+        m1.put("img" , R.drawable.taipei);
+        HashMap<String , Object> m2 =new HashMap<>();
         m2.put("city" , "台中");
         m2.put("code" , "04");
-        HashMap<String , String> m3 =new HashMap<>();
-        m3.put("city" , "台南");
-        m3.put("code" , "06");
+        m2.put("img" , R.drawable.tc);
+        HashMap<String , Object> m3 =new HashMap<>();
+        m3.put("city" , "高雄");
+        m3.put("code" , "07");
+        m3.put("img" , R.drawable.kh);
         mylist.add(m1);
         mylist.add(m2);
         mylist.add(m3);
 
         //自訂的
         simpleAdapter = new SimpleAdapter(this,mylist,R.layout.myitem ,
-                new String[] {"city" , "code"} , new int[] {R.id.textView , R.id.textView2});
+                new String[] {"city" , "code" , "img"} , new int[] {R.id.textView , R.id.textView2 , R.id.imageView});
 
 //        //android裡面有的
 //        simpleAdapter = new SimpleAdapter(this,mylist,android.R.layout.simple_list_item_2 ,
